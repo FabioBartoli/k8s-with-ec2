@@ -105,3 +105,11 @@ module "k8s_provisioner" {
     }
   ]
 }
+
+output "control_plane_public_ip" {
+  value = module.k8s_provisioner.control_plane_public_ip
+}
+
+output "worker_public_ips" {
+  value = module.k8s_provisioner.worker_public_ips
+}
