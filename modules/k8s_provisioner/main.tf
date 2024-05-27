@@ -187,7 +187,7 @@ resource "aws_instance" "worker" {
       echo 'alias k=kubectl' >>~/.bashrc
       echo 'complete -F __start_kubectl k' >>~/.bashrc
       #####################################################################
-      JOIN_COMMAND=$(aws ssm get-parameter --name "k8s_join_command" --query "Parameter.Value" --output text)
+      JOIN_COMMAND=$(aws ssm get-parameter --name "k8s_join_command" --query "Parameter.Value" --with-decryption --output text)
       sudo $JOIN_COMMAND
       ################ MONTANDO O NFS ######################
       sudo mkdir /mnt/nfs
