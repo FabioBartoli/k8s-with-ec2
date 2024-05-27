@@ -107,7 +107,7 @@ resource "aws_instance" "control_plane" {
       echo 'complete -F __start_kubectl k' >>~/.bashrc
       #####################################################################
       JOIN_COMMAND=$(kubeadm token create --print-join-command)
-      aws ssm put-parameter --name "k8s_join_command" --value "$JOIN_COMMAND" --type "String" --overwrite
+      aws ssm put-parameter --name "k8s_join_command" --value "$JOIN_COMMAND" --type "SecureString" --overwrite
       kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
       ################ CRIANDO O NFS ######################
       sudo mkdir /mnt/nfs

@@ -55,7 +55,7 @@ jobs:
           fi
 
       - name: Print Terraform Outputs
-        if: steps.terraform-apply-or-destroy.outcome == 'success' && github.event.inputs.action == 'apply'
+        if: steps.terraform-apply-or-destroy.outcome != 'failure' && github.event.inputs.action == 'apply'
         run: |
           echo "Control Plane Public IP:"
           terraform output control_plane_public_ip
