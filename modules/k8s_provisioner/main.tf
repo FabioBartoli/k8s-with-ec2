@@ -78,6 +78,8 @@ resource "aws_instance" "control_plane" {
       sudo sysctl --system
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl gpg unzip nfs-kernel-server nfs-common bash-completion
+      hostname PICK-control-plane
+      echo "127.0.0.1 PICK-control-plane" >> /etc/hosts
       unzip awscliv2.zip
       sudo ./aws/install
       mkdir -p ~/.aws
@@ -163,6 +165,8 @@ resource "aws_instance" "worker" {
       sudo sysctl --system
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl gpg unzip nfs-kernel-server nfs-common bash-completion
+      hostname PICK-worker-${count.index + 1}
+      echo "127.0.0.1 PICK-worker-${count.index + 1}" >> /etc/hosts
       unzip awscliv2.zip
       sudo ./aws/install
       mkdir -p ~/.aws
