@@ -64,6 +64,7 @@ Você precisará da chave privada criada anteriormente para acessar o cluster se
 
 Baseado nesse valor de 750 horas para instâncias e 750 horas para IPs públicos, precisamos dividir isso pelo número de instâncias que teremos em nosso cluster. No caso, como estou criando 3 instâncias (1 control plane + 2 workers), eu teria 250 horas grátis por máquina + IP por mês, o que seriam cerca de 10 dias/ mês
 Se você aumentar o número de instâncias, os dias do free tier irão diminuir na mesma proporção. Para que você possa utilizar pelo máximo de tempo possível sem gerar custos, lembre-se sempre de realizar o "**destroy**" da sua infraestrutura sempre que não tiver utilizando. Só não esqueça de salvar seus arquivos que estão no cluster :o
+
 3. *Por último: crie um alarme de custos na AWS*: Apesar de todo o cuidado na criação do Cluster, algo não previsto pode acabar gerando custos em sua conta. Para evitar isso, siga [este tutorial da AWS](https://docs.aws.amazon.com/pt_br/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html) e crie um alarme para ser avisado sempre que sua conta gerar algum custo. Aqui, eu deixei o alarme para avisar quando o custo estimado chegar em 2 dólares 💸
 
 ##
