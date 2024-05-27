@@ -1,10 +1,10 @@
-name: Terraform Pipeline
+name: PICK EC2 K8S PIPELINE
 
 on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Choose action to perform'
+        description: 'Escolha uma ação'
         required: true
         default: 'apply'
         type: choice
@@ -15,6 +15,8 @@ on:
 env:
   TF_VAR_access_key: ${{ secrets.ACCESS_KEY }}
   TF_VAR_secret_key: ${{ secrets.SECRET_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
 
 jobs:
   terraform:
@@ -23,7 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up SSH keys
+      - name: Loading Credentials
         run: |
           echo "${{ secrets.PUBLIC_KEY }}" > id_rsa.pub
           echo "${{ secrets.PRIVATE_KEY }}" > id_rsa
@@ -33,7 +35,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
-        run: terraform init
+        run: ls -lha && terraform init
 
       - name: Terraform Validate
         id: validate
