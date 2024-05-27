@@ -11,6 +11,9 @@ Ao final da execução do deploy, você terá um cluster criado e um sistema de 
 
 ##
 ### Requisitos:
+#### Faça um fork deste repositório
+Fique à vontade para realizar um fork desse projeto e utilizá-lo. Assim, você não precisará baixar ou instalar qualquer dependência em sua máquina local
+##
 #### Tenha uma chave SSH
 A primeira coisa que você precisará para esse projeto é de uma chave SSH. Você pode ver [este tutorial](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) caso não saiba como fazer
 Para que o Actions funcione, você precisará salvar suas chaves SSH privada e pública como secrets do repositório github. Os nomes devem ser "**PRIVATE_KEY**" e "**PUBLIC_KEY**", respectivamente
@@ -64,6 +67,6 @@ Se você aumentar o número de instâncias, os dias do free tier irão diminuir 
 
 ##
 ### Considerações finais
-Fique à vontade para realizar um fork desse projeto e utilizá-lo. Melhorias no projeto também são bem-vindas, basta mandar um pull request! 😀
+Melhorias no projeto são bem-vindas, basta mandar um pull request! 😀
 Como este projeto é para um estudo mais simples, não implementei nenhuma lógica para aumentar o número de Control Planes e realizar a configuração de algum tipo de HA quando forem criadas mais máquinas. Então, independente do número que você passar, será criado apenas 1 Control Plane e o restante serão workers. Caso queira implementar algo nesse sentido, fique à vontade!
 ##### Qualquer dúvida ou sugestão, estou à disposição! >> [Telegram](https://t.me/FabioBartoli) <<
