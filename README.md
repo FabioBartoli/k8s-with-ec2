@@ -1,6 +1,7 @@
 ### Motivação e Funcionamento
 Baseado nas aulas do [@Badtuxx](https://github.com/Badtuxx) no PICK 2024, resolvi criar esse projeto para realizar a criação de um cluster K8S PARA ESTUDOS de forma automatizada utilizando instâncias EC2 na AWS. 
-A ideia aqui é ter total controle do cluster, inclusive do control-plane, para que possamos configurar o que quisermos para entender melhor o funcionamento do Kubernetes. Outra vantagem é o custo, pois dependendo da configuração que você criar este cluster, poderá utilizá-lo com um valor bem baixo, tirando o maior proveito possível do Free Tier da AWS. Leia atentamente a seção "***Utilizando o Cluster Gratuitamente***"
+A ideia aqui é ter total controle do cluster, inclusive do control-plane, para que possamos configurar o que quisermos para entender melhor o funcionamento do Kubernetes. Outra vantagem é o custo, pois dependendo da configuração que você criar este cluster, poderá utilizá-lo com um valor bem baixo, tirando o maior proveito possível do Free Tier da AWS. Leia atentamente a seção ["***Utilizando o Cluster Gratuitamente***"](https://github.com/FabioBartoli/k8s-with-ec2?tab=readme-ov-file#utilizando-o-cluster-gratuitamente)
+
 Este projeto utiliza o **Terraform** para provisionar o ambiente de forma automatizada, facilitando tanto a criação quanto a exclusão ou atualização dos recursos,  e o **Github Actions**, fazendo com que não seja necessário o download do projeto e executá-lo em sua máquina local, caso não queira.
 Ao final da execução do deploy, você terá um cluster criado e um sistema de arquivos com **NFS Server** para poder realizar seus laboratórios de Kubernetes
 ##
