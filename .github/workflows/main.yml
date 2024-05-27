@@ -53,3 +53,11 @@ jobs:
             echo "Invalid action: ${{ github.event.inputs.action }}"
             exit 1
           fi
+
+      - name: Print Terraform Outputs
+        if: steps.terraform-apply-or-destroy.outcome == 'success' && github.event.inputs.action == 'apply'
+        run: |
+          echo "Control Plane Public IP:"
+          terraform output control_plane_public_ip
+          echo "Worker Public IPs:"
+          terraform output worker_public_ips
