@@ -29,7 +29,7 @@ resource "aws_security_group" "this" {
   }
 
   tags = {
-    Name = "PICK-K8S-SG-Instance-${count.index + 1}"
+    Name = "K8S-SG-Instance-${count.index + 1}"
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_subnet" "k8s_subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "PICK-K8S-Subnet"
+    Name = "K8S-Subnet"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_instance" "control_plane" {
   vpc_security_group_ids = [aws_security_group.this[0].id]
 
   tags = {
-    Name = "PICK-K8S-Control-Plane"
+    Name = "K8S-Control-Plane"
   }
 
   provisioner "remote-exec" {
@@ -78,7 +78,7 @@ resource "aws_instance" "control_plane" {
       sudo sysctl --system
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       sudo apt-get update && sudo apt-get install -y systemd apt-transport-https ca-certificates curl gpg unzip nfs-kernel-server nfs-common bash-completion
-      sudo hostnamectl set-hostname PICK-control-plane
+      sudo hostnamectl set-hostname K8s-control-plane
       unzip awscliv2.zip
       sudo ./aws/install
       mkdir -p ~/.aws
@@ -144,7 +144,7 @@ resource "aws_instance" "worker" {
   vpc_security_group_ids = [aws_security_group.this[count.index + 1].id]
 
   tags = {
-    Name = "PICK-K8S-Worker-${count.index + 1}"
+    Name = "K8S-Worker-${count.index + 1}"
   }
 
   provisioner "remote-exec" {
@@ -164,7 +164,7 @@ resource "aws_instance" "worker" {
       sudo sysctl --system
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       sudo apt-get update && sudo apt-get install -y systemd apt-transport-https ca-certificates curl gpg unzip nfs-kernel-server nfs-common bash-completion
-      sudo hostnamectl set-hostname PICK-worker-${count.index + 1}
+      sudo hostnamectl set-hostname K8s-worker-${count.index + 1}
       unzip awscliv2.zip
       sudo ./aws/install
       mkdir -p ~/.aws
